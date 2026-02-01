@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Date Wizard 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff0f5;
+}
+
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+h1 {
+  color: #ff2f92;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+button {
+  background: #ff2f92;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #eee;
+  color: #555;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.option {
+  background: #ffe3ef;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.option.selected {
+  outline: 3px solid #ff2f92;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- STEP 1 -->
+  <div class="step active" id="step1">
+    <h1>STEP 1</h1>
+    <div class="card">
+      <p><strong>Takhmina</strong>, will you go on a date with me? 💖</p>
+      <button onclick="next()">Yes 💕</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step" id="step2">
+    <h1>STEP 2</h1>
+    <div class="card">
+      <p>Choose a happy GIF</p>
+      <input type="text" placeholder="Paste GIF URL here">
+      <br>
+      <button onclick="next()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step" id="step3">
+    <h1>STEP 3</h1>
+    <div class="card">
+      <p>When are you free?</p>
+      <input type="date"><br><br>
+      <input type="time">
+      <br>
+      <button onclick="next()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step" id="step4">
+    <h1>STEP 4</h1>
+    <div class="card">
+      <p>What should we eat?</p>
+      <div class="options">
+        <div class="option" onclick="select(this)">Pizza 🍕</div>
+        <div class="option" onclick="select(this)">Sushi 🍣</div>
+        <div class="option" onclick="select(this)">Burger 🍔</div>
+        <div class="option" onclick="select(this)">Steak 🥩</div>
+      </div>
+      <button onclick="next()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step" id="step5">
+    <h1>STEP 5</h1>
+    <div class="card">
+      <p>What should we do?</p>
+      <div class="options">
+        <div class="option" onclick="select(this)">Movie 🎬</div>
+        <div class="option" onclick="select(this)">Bowling 🎳</div>
+        <div class="option" onclick="select(this)">Walk 🌙</div>
+        <div class="option" onclick="select(this)">Concert 🎵</div>
+      </div>
+      <button onclick="next()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step" id="step6">
+    <h1>DONE 💘</h1>
+    <div class="card">
+      <p>This date is officially planned 😌</p>
+      <p>See you soon ❤️</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let current = 1;
+
+function next() {
+  document.getElementById("step" + current).classList.remove("active");
+  current++;
+  document.getElementById("step" + current).classList.add("active");
+}
+
+function select(el) {
+  el.classList.toggle("selected");
+}
+</script>
+
+</body>
+</html>
